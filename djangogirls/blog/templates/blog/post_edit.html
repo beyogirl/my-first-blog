@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>New post</h1>
+    <!-- form 이 post방식이기 때문에 {%csrf_token%} 사용 -->
+    <form method="POST" class="post-form">{% csrf_token %}
+    <!-- form 은  action 속성이 목적지를 나타냄. 그러나 현재는  views.py에서  form이라는 이름으로 목적지, 전달 자료 양식 관련 정보를 모두 제공하고 있음. 
+    (class META 내부의 model변수와 fields 변수를 통해서) 따라서 아래와 같이 {전달받은 양식.as_p} 라고만 작성하면 됨 -->
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
